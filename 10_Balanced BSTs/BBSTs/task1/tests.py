@@ -13,21 +13,8 @@ def test_answer_placeholders():
         failed()
 
 def test_generator(n):
-    li = []
-    a_and_b_s = set()
-    h_s = set()
-    for i in range(n):
-        a = randint(1, 100000)
-        b = randint(1, 100000)
-        h = randint(1, 100000)
-        if a in a_and_b_s or b in a_and_b_s or h in h_s or a == b:
-            continue
-        a_and_b_s.append(a)
-        a_and_b_s.append(b)
-        h_s.append(h)
-        if a > b:
-            a, b = b, a
-        li.append((a, h, b))
+    li = [i for i in range(n)]
+    shuffle(li)
     return li
 
 if __name__ == '__main__':

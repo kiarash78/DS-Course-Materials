@@ -1,5 +1,6 @@
 # TODO: type solution here
 from rb_tree import RedBlackTree
+from random import shuffle
 
 class My_pair:
     def __init__(self, key, value):
@@ -29,27 +30,30 @@ class My_pair:
     def __ne__(self, other):
         return not self == other
 
+def main():
+    n = 10
+    li = [i for i in range(n)]
+    shuffle(li)
+    print(li)
+    print(func(li))
 
-#li elements are in (a, b, h) form
 def func(li):
-    li.sort(key=lambda x:x[1])
     tree = RedBlackTree()
-    for a, h, b in li:
-        ans = [(element.key, element.value) for element in tree]
-        prev_b = tree.floor(My_pair(b, None))
-        if prev_b is None:
-            height_b = 0
-        else:
-            height_b = prev_b.value
-        next_a = tree.ceil(My_pair(a, None))
-        while (next_a is not None) and next_a.key <= b:
-            tree.remove(next_a)
-            next_a = tree.ceil(My_pair(a, None))
-
-        tree.add(My_pair(a, h))
-        tree.add(My_pair(b, height_b))
-    ans = [(element.key, element.value) for element in tree]
-    return ans
+    depths = []
+    for num in li:
+        next_node = tree.ceil(My_pair(num, None))
+        prev_node = tree.floor(My_pair(num, None))
+        parent_depth = -1
+        for node in (next_node, prev_node):
+            if node != None:
+                parent_depth = max(parent_depth, node.value)
+        tree.add(My_pair(num, parent_depth + 1))
+        depths.append(parent_depth + 1)
+    return depths
 
 
 
+
+
+if __name__ == '__main__':
+    main()

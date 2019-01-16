@@ -179,7 +179,6 @@ class My_pair:
     def __ne__(self, other):
         return not self == other
 
-
 def data_structure(li):
     x = Tree()
     output = []
