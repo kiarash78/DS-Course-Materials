@@ -179,6 +179,7 @@ class My_pair:
     def __ne__(self, other):
         return not self == other
 
+
 def data_structure(li):
     x = Tree()
     output = []
@@ -188,7 +189,6 @@ def data_structure(li):
             amount = int(cmd[2])
             x.increase_value(num, amount)
         else:
-            print(cmd)
             num = int(cmd[1])
             output.append(x.sum_range_zero(My_pair(num, None)))
-
+    return output

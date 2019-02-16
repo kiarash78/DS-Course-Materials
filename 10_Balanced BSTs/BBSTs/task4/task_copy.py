@@ -1,5 +1,4 @@
 # TODO: type solution here
-import sys
 from rb_tree import RedBlackTree
 
 class My_pair:
@@ -36,20 +35,24 @@ def func(li):
     li.sort(key=lambda x:x[1])
     tree = RedBlackTree()
     for a, h, b in li:
-        ans = [(element.key, element.value) for element in tree]
         prev_b = tree.floor(My_pair(b, None))
         if prev_b is None:
             height_b = 0
         else:
             height_b = prev_b.value
+
         next_a = tree.ceil(My_pair(a, None))
         while (next_a is not None) and next_a.key <= b:
             tree.remove(next_a)
             next_a = tree.ceil(My_pair(a, None))
+
         tree.add(My_pair(a, h))
         tree.add(My_pair(b, height_b))
-    ans = [(element.key, element.value) for element in tree]
+
+    prev_height = 0
+    ans = []
+    for element in tree:
+        if element.value != prev_height:
+            prev_height = element.value
+            ans.append((element.key, element.value))
     return ans
-
-
-

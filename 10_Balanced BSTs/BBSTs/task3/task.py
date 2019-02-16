@@ -127,5 +127,3 @@ def func(li):
     return total
 
 
-
-

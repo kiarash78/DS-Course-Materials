@@ -1,4 +1,3 @@
-# TODO: type solution here
 from rb_tree import RedBlackTree
 from random import shuffle
 
@@ -30,12 +29,6 @@ class My_pair:
     def __ne__(self, other):
         return not self == other
 
-def main():
-    n = 10
-    li = [i for i in range(n)]
-    shuffle(li)
-    print(li)
-    print(func(li))
 
 def func(li):
     tree = RedBlackTree()
@@ -55,5 +48,3 @@ def func(li):
 
 
 
-if __name__ == '__main__':
-    main()

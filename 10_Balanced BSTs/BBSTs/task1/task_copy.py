@@ -1,4 +1,3 @@
-# TODO: type solution here
 from rb_tree import RedBlackTree
 from random import shuffle
 

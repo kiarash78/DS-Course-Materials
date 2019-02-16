@@ -17,25 +17,31 @@ def test_generator(n):
     a_and_b_s = set()
     h_s = set()
     for i in range(n):
-        a = randint(1, 100000)
-        b = randint(1, 100000)
-        h = randint(1, 100000)
-        if a in a_and_b_s or b in a_and_b_s or h in h_s or a == b:
+        max_range = 10000
+        a = randint(1, max_range)
+        b = randint(1, max_range)
+        h = randint(1, max_range)
+        # if a in a_and_b_s or b in a_and_b_s or h in h_s or a == b:
+        #     continue
+        # a_and_b_s.add(a)
+        # a_and_b_s.add(b)
+        # h_s.add(h)
+        if a == b:
             continue
-        a_and_b_s.append(a)
-        a_and_b_s.append(b)
-        h_s.append(h)
         if a > b:
             a, b = b, a
         li.append((a, h, b))
     return li
 
 if __name__ == '__main__':
-    test_nums = [10, 10, 100, 1000]
+    test_nums = [10, 10, 100, 100, 10000]
     for test_num in test_nums:
         li = test_generator(test_num)
-        assert func(li) == func_judge(li)
-    run_common_tests()
+        user_li = func(li[0:len(li)])
+        judge_li = func_judge(li[0:len(li)])
+        if user_li != judge_li:
+            failed("Wrong answer")
+    print("PASS")
     # test_answer_placeholders()       # TODO: uncomment test call
 
 

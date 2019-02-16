@@ -17,11 +17,14 @@ def test_generator(n):
     shuffle(li)
     return li
 if __name__ == '__main__':
-    test_nums = [10, 10, 100, 1000]
+    test_nums = [10, 10, 100, 100, 10000]
     for test_num in test_nums:
         li = test_generator(test_num)
-        assert func(li) == func_judge(li)
-    run_common_tests()
+        user_li = func(li[0:len(li)])
+        judge_li = func_judge(li[0:len(li)])
+        if user_li != judge_li:
+            failed("Wrong answer")
+    print("PASS")
     # test_answer_placeholders()       # TODO: uncomment test call
 
 

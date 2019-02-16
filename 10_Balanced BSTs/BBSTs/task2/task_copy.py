@@ -191,4 +191,4 @@ def data_structure(li):
         else:
             num = int(cmd[1])
             output.append(x.sum_range_zero(My_pair(num, None)))
-
+    return output
